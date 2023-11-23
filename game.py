@@ -10,9 +10,11 @@ pygame.init()
 window = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Missão Natal")
 
+
 assets = load_assets()
 
 world_speed = -10
+background_rect = assets[BACKGROUND_IMG].get_rect()
 
 game = True
 clock = pygame.time.Clock()
@@ -50,7 +52,7 @@ while game:
 
     # ----- Gera saídas
     window.fill((0, 0, 0))  # Preenche com a cor branca
-    window.blit(assets[BACKGROUND_IMG], (0, 0))
+    window.blit(assets[BACKGROUND_IMG], background_rect)
     # Desenhando meteoros
     all_sprites.draw(window)
 
