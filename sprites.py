@@ -16,14 +16,14 @@ class Player(pygame.sprite.Sprite):
         self.rect.centerx = WIDTH / 10
         self.rect.bottom = HEIGHT
         self.speedy = 0
-        self.assets = assets
+        self.assets = assets 
 
     def update(self):
         # Atualização da posição do jogador
         Player.speedy = GRAVITY
     
         if self.state == FLYING:
-            Player.speedy = -12
+            Player.speedy = -6
         if self.state == STILL:
             Player.speedy = 0
 
@@ -59,4 +59,3 @@ class Bird(pygame.sprite.Sprite):
             self.rect.x = random.randint(0, WIDTH-BIRD_WIDTH)
             self.rect.y = random.randint(-100, -BIRD_HEIGHT)
             self.speedx = random.randint(-3, 3)
-

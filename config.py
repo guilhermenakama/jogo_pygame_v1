@@ -11,10 +11,10 @@ HEIGHT = 600 # Altura da tela
 FPS = 60 # Frames por segundo
 
 # Define tamanhos
-BIRD_WIDTH = 50
-BIRD_HEIGHT = 38
-PLAYER_WIDTH = 80
-PLAYER_HEIGHT = 62
+BIRD_WIDTH = 70
+BIRD_HEIGHT = 58
+PLAYER_WIDTH = 90
+PLAYER_HEIGHT = 72
 
 # Define algumas variáveis com as cores básicas
 WHITE = (255, 255, 255)
@@ -29,8 +29,14 @@ INIT = 0
 GAME = 1
 QUIT = 2
 
+# Configurações de jogabilidade
+GRAVITY = 4
+WORLD_SPEED = -3
+INITIAL_BIRDS = 5
+
 # Estados do Player
-STILL = 0
-FALLING = 1
-FLYING = 2
-GRAVITY = 6
+DONE = 0
+PLAYING = 1
+STILL = 2
+FALLING = 3
+FLYING = 4
