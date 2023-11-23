@@ -45,9 +45,9 @@ class Bird(pygame.sprite.Sprite):
         self.image = assets[BIRD_IMG]
         self.mask = pygame.mask.from_surface(self.image)
         self.rect = self.image.get_rect()
-        self.rect.x = random.randint(0, WIDTH - BIRD_WIDTH)
-        self.rect.y = random.randint(-100, -BIRD_HEIGHT)
-        self.speedx = random.randint(-3, 3)
+        self.rect.x = WIDTH - BIRD_WIDTH
+        self.rect.y = random.randint(0, HEIGHT)
+        self.speedx = random.randint(-1, 1)
 
     def update(self):
         # Atualizando a posição do pássaro
@@ -56,6 +56,6 @@ class Bird(pygame.sprite.Sprite):
         # Se o pássaro passar do final da tela, volta para cima e sorteia
         # novas posições e velocidades
         if self.rect.top > HEIGHT or self.rect.right < 0 or self.rect.left > WIDTH:
-            self.rect.x = random.randint(0, WIDTH-BIRD_WIDTH)
-            self.rect.y = random.randint(-100, -BIRD_HEIGHT)
-            self.speedx = random.randint(-3, 3)
+            self.rect.x = WIDTH-BIRD_WIDTH
+            self.rect.y = random.randint(0, HEIGHT)
+            self.speedx = random.randint(-1, 1)

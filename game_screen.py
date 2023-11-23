@@ -3,7 +3,7 @@ import random
 from assets import *
 from config import *
 from sprites import *
-
+ 
 def game_screen(screen):
     # Variável para o ajuste de velocidade
     clock = pygame.time.Clock()
@@ -31,7 +31,7 @@ def game_screen(screen):
         world_sprites.add(bird)
         # Adiciona também no grupo de todos os sprites para serem atualizados e desenhados
         all_sprites.add(bird)
-
+    
     # Estados do Player
     DONE = 0
     PLAYING = 1
@@ -49,7 +49,7 @@ def game_screen(screen):
         for event in pygame.event.get():
             # ----- Verifica consequências
             if event.type == pygame.QUIT:
-                game = False
+                state = DONE
 
         # Verifica se apertou alguma tecla.
             if event.type == pygame.KEYDOWN:

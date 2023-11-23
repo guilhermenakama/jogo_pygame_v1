@@ -11,8 +11,8 @@ HEIGHT = 600 # Altura da tela
 FPS = 60 # Frames por segundo
 
 # Define tamanhos
-BIRD_WIDTH = 70
-BIRD_HEIGHT = 58
+BIRD_WIDTH = 90
+BIRD_HEIGHT = 72
 PLAYER_WIDTH = 90
 PLAYER_HEIGHT = 72
 
