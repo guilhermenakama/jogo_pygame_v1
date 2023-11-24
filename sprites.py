@@ -9,6 +9,7 @@ class Player(pygame.sprite.Sprite):
         # Construtor da classe mãe (Sprite).
         pygame.sprite.Sprite.__init__(self)
         self.state = STILL
+        self.collided = False 
 
         self.image = assets[PLAYER_IMG]
         self.mask = pygame.mask.from_surface(self.image)
@@ -35,6 +36,13 @@ class Player(pygame.sprite.Sprite):
         if self.rect.bottom > HEIGHT:
             self.state = STILL
             self.rect.bottom = HEIGHT
+    def collide_birds(self, birds_group):
+
+        return pygame.sprite.spritecollide(self, birds_group, False, pygame.sprite.collide_rect)
+
+    def reset(self):
+        
+        self.collided = False
 
 
 class Bird(pygame.sprite.Sprite):

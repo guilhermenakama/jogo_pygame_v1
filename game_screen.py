@@ -40,7 +40,8 @@ def game_screen(screen):
     FLYING = 4
 
     state = PLAYING
-    while state != DONE:
+    game_run = True
+    while state != DONE and game_run:
 
         # Ajusta a velocidade do jogo.
         clock.tick(FPS)
@@ -65,6 +66,11 @@ def game_screen(screen):
         # Depois de processar os eventos.
         # Atualiza a acao de cada sprite. O grupo chama o método update() de cada Sprite dentre dele.
         all_sprites.update()
+
+        if not player.collided and player.collide_birds(world_sprites):
+        # Define o jogador como colidido
+            Player.collided = True
+
 
         # Verifica se algum bloco saiu da janela
         for bird in world_sprites:
