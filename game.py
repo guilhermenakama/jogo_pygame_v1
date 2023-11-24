@@ -16,7 +16,7 @@ pygame.display.set_caption("Missão Natal")
 
 # Loop principal do jogo
 state = INIT
-while state != QUIT:
+while state != QUIT: 
     if state == INIT:
         state = init_screen(screen)
     elif state == GAME:
@@ -25,4 +25,4 @@ while state != QUIT:
         state = QUIT
 
 # ===== Finalização =====
-pygame.quit()  # Função do PyGame que finaliza os recursos utilizados   
+pygame.quit()  # Função do PyGame que finaliza os recursos utilizados    

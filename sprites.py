@@ -47,7 +47,7 @@ class Bird(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = WIDTH - BIRD_WIDTH
         self.rect.y = random.randint(0, HEIGHT)
-        self.speedx = random.randint(-1, 1)
+        self.speedx = random.randint(-3, -1)
 
     def update(self):
         # Atualizando a posição do pássaro
@@ -58,4 +58,4 @@ class Bird(pygame.sprite.Sprite):
         if self.rect.top > HEIGHT or self.rect.right < 0 or self.rect.left > WIDTH:
             self.rect.x = WIDTH-BIRD_WIDTH
             self.rect.y = random.randint(0, HEIGHT)
-            self.speedx = random.randint(-1, 1)
+            self.speedx = random.randint(-1,-1)
