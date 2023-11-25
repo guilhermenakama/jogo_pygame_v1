@@ -30,8 +30,9 @@ def init_screen(initial_screen):
                 running = False
 
             if event.type == pygame.KEYUP:
-                state = GAME
-                running = False
+                    if event.key == pygame.K_SPACE:
+                        state = GAME
+                        running = False
 
         # A cada loop, redesenha o fundo e os sprites
         initial_screen.fill(BLACK)

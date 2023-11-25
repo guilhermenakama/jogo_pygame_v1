@@ -25,7 +25,7 @@ class Player(pygame.sprite.Sprite):
 
     def update(self):
         # Atualização da posição do jogador
-        Player.speedy = GRAVITY
+        self.speedy = GRAVITY
     
         if self.state == FLYING:
             Player.speedy = FLY_SPEED
@@ -53,7 +53,6 @@ class Bird(pygame.sprite.Sprite):
     def __init__(self, assets):
         super().__init__()
         # Construtor da classe mãe (Sprite).
-        pygame.sprite.Sprite.__init__(self)
 
         self.image = assets[BIRD_IMG]
         self.mask = pygame.mask.from_surface(self.image)

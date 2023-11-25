@@ -18,11 +18,18 @@ pygame.display.set_caption("Missão Natal")
 game_running = True
 state = INIT
 world_sprites = pygame.sprite.Group()
+Player = Player(load_assets())
+
 while state != QUIT and game_running: 
     if state == INIT:
         state = init_screen(screen)
+
     elif state == GAME:
+        Player.update()
         state, game_running = game_screen(screen, Player, world_sprites)
+        if state == QUIT:
+            game_running = False
+             
     else:
         state = QUIT
 
