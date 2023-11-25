@@ -7,6 +7,9 @@ from config import *
 class Player(pygame.sprite.Sprite):
     def __init__(self, assets):
         # Construtor da classe mãe (Sprite).
+        super().__init__()
+        self.collided = False
+
         pygame.sprite.Sprite.__init__(self)
         self.state = STILL
         self.collided = False 
@@ -14,9 +17,10 @@ class Player(pygame.sprite.Sprite):
         self.image = assets[PLAYER_IMG]
         self.mask = pygame.mask.from_surface(self.image)
         self.rect = self.image.get_rect()
-        self.rect.centerx = WIDTH / 10
-        self.rect.bottom = HEIGHT
+        self.rect.centerx = WIDTH / 4
+        self.rect.bottom = int(HEIGHT * 0.8)
         self.speedy = 0
+        self.collided = False
         self.assets = assets 
 
     def update(self):
@@ -24,7 +28,7 @@ class Player(pygame.sprite.Sprite):
         Player.speedy = GRAVITY
     
         if self.state == FLYING:
-            Player.speedy = -6
+            Player.speedy = FLY_SPEED
         if self.state == STILL:
             Player.speedy = 0
 
@@ -47,6 +51,7 @@ class Player(pygame.sprite.Sprite):
 
 class Bird(pygame.sprite.Sprite):
     def __init__(self, assets):
+        super().__init__()
         # Construtor da classe mãe (Sprite).
         pygame.sprite.Sprite.__init__(self)
 
@@ -54,7 +59,7 @@ class Bird(pygame.sprite.Sprite):
         self.mask = pygame.mask.from_surface(self.image)
         self.rect = self.image.get_rect()
         self.rect.x = WIDTH - BIRD_WIDTH
-        self.rect.y = random.randint(0, HEIGHT)
+        self.rect.y = random.randint( HEIGHT // 4, HEIGHT // 1.5)
         self.speedx = random.randint(-3, -1)
 
     def update(self):

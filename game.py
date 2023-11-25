@@ -17,24 +17,30 @@ pygame.display.set_caption("Missão Natal")
 # Loop principal do jogo
 game_running = True
 state = INIT
+world_sprites = pygame.sprite.Group()
 while state != QUIT and game_running: 
     if state == INIT:
         state = init_screen(screen)
     elif state == GAME:
-        state = game_screen(screen)
+        state, game_running = game_screen(screen, Player, world_sprites)
     else:
         state = QUIT
 
     # Verifica colisão com os pássaros
-    if not Player.collided and Player.collide_birds(World_sprites):
+    if not Player.collided and Player.collide_birds(world_sprites):
         # Define o jogador como colidido
         Player.collided = True
-        # game_running = False  # Não encerra o jogo aqui
 
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            game_running = False
+        elif event.type == pygame.KEYDOWN:
+            # Aqui você pode adicionar tratamentos de eventos de teclas globais
+            pass
         # Reinicia o jogo se o jogador pressionar a tecla "Esc"
         keys = pygame.key.get_pressed()
         if keys[pygame.K_ESCAPE]:
-            game_running = False
+            
             Player.reset()  # Se desejar reiniciar o jogador
 
 # ===== Finalização =====
