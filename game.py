@@ -14,7 +14,7 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Missão Natal")
 # Loop principal do jogo
 
-state = INIT
+state = INIT 
 while state != QUIT: 
     if state == INIT:
         state = init_screen(screen)
