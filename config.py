@@ -1,4 +1,3 @@
-import pygame
 from os import path
 
 # Estabelece a pasta que contem as figuras e sons.
@@ -34,7 +33,6 @@ QUIT = 2
 GRAVITY = 4
 WORLD_SPEED = -3
 INITIAL_BIRDS = 5
-FLY_SPEED = -10
 
 # Estados do Player
 DONE = 0

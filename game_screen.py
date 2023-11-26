@@ -1,15 +1,20 @@
 import pygame
+import random
 from assets import *
 from config import *
 from sprites import *
  
 def game_screen(screen):
-    clock = pygame.time.Clock()  # Variável para o ajuste de velocidade
-    assets = load_assets()  # Carrega assets
+    # Variável para o ajuste de velocidade
+    clock = pygame.time.Clock()
+
+    # Carrega assets
+    assets = load_assets()
 
     # Carrega o fundo do jogo
     background = assets[BACKGROUND_IMG]
-    background_rect = background.get_rect() # Redimensiona o fundo
+    # Redimensiona o fundo
+    background_rect = background.get_rect()
 
     # Cria Sprite do jogador
     player = Player(assets)
@@ -35,7 +40,6 @@ def game_screen(screen):
     FLYING = 4
 
     state = PLAYING
-    #game_run = True
     while state != DONE:
 
         clock.tick(FPS)  # Ajusta a velocidade do jogo.
@@ -48,30 +52,27 @@ def game_screen(screen):
 
         # Verifica se apertou alguma tecla.
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_SPACE: # Dependendo da tecla, altera a velocidade.
+                # Dependendo da tecla, altera a velocidade.
+                if event.key == pygame.K_SPACE:
                     player.state = FLYING   
 
             if event.type == pygame.KEYUP:
-                if event.key == pygame.K_SPACE: # Dependendo da tecla, altera a velocidade.
+                # Dependendo da tecla, altera a velocidade.
+                if event.key == pygame.K_SPACE:
                     player.state = FALLING
-                    
-            # Verifica colisão com os pássaros
-            if Player.collided and Player.collide_birds(world_sprites):
-                Player.collided = True  # Define o jogador como colidido
+        
+        if not player.collided and pygame.sprite.spritecollide(player, world_sprites, True):
+         # Verifica colisão com os pássaros e define jogador como colidido
+            player.collided = True
+            reset_player(player)
 
-           # elif event.type == pygame.KEYDOWN:
-                # Aqui você pode adicionar tratamentos de eventos de teclas globais
-                #pass
+        # Reinicia o jogo se o jogador pressionar a tecla "Esc"
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_ESCAPE]:
+            state = DONE
+            reset_player(player)  # Se desejar reiniciar o jogador
 
-            # Reinicia o jogo se o jogador pressionar a tecla "Esc"
-            keys = pygame.key.get_pressed()
-            if keys[pygame.K_ESCAPE]:
-                
-                Player.reset()  # Se desejar reiniciar o jogador
-
-        # Depois de processar os eventos.
-        # Atualiza a acao de cada sprite. O grupo chama o método update() de cada Sprite dentre dele.
-        all_sprites.update()
+        all_sprites.update()  # Depois de processar os eventos, atualiza a acao de cada sprite e chama o update de cada um.
 
         # Verifica se algum bloco saiu da janela
         for bird in world_sprites:
@@ -87,9 +88,11 @@ def game_screen(screen):
 
         # Atualiza a posição da imagem de fundo.
         background_rect.x += WORLD_SPEED
+
         # Se o fundo saiu da janela, faz ele voltar para dentro.
         if background_rect.right < 0:
             background_rect.x += background_rect.width
+
         # Desenha o fundo e uma cópia para a direita.
         # Assumimos que a imagem selecionada ocupa pelo menos o tamanho da janela.
         # Além disso, ela deve ser cíclica, ou seja, o lado esquerdo deve ser continuação do direito.
@@ -103,4 +106,3 @@ def game_screen(screen):
 
         # Depois de desenhar tudo, inverte o display.
         pygame.display.flip()
-    return state
