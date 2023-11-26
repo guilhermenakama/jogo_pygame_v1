@@ -40,12 +40,11 @@ class Player(pygame.sprite.Sprite):
         if self.rect.bottom > HEIGHT:
             self.state = STILL
             self.rect.bottom = HEIGHT
+
     def collide_birds(self, birds_group):
-
         return pygame.sprite.spritecollide(self, birds_group, False, pygame.sprite.collide_rect)
-
+    
     def reset(self):
-        
         self.collided = False
 
 

@@ -1,20 +1,15 @@
 import pygame
-import random
 from assets import *
 from config import *
 from sprites import *
  
 def game_screen(screen):
-    # Variável para o ajuste de velocidade
-    clock = pygame.time.Clock()
-
-    # Carrega assets
-    assets = load_assets()
+    clock = pygame.time.Clock()  # Variável para o ajuste de velocidade
+    assets = load_assets()  # Carrega assets
 
     # Carrega o fundo do jogo
     background = assets[BACKGROUND_IMG]
-    # Redimensiona o fundo
-    background_rect = background.get_rect()
+    background_rect = background.get_rect() # Redimensiona o fundo
 
     # Cria Sprite do jogador
     player = Player(assets)
@@ -40,11 +35,10 @@ def game_screen(screen):
     FLYING = 4
 
     state = PLAYING
-    game_run = True
-    while state != DONE and game_run:
+    #game_run = True
+    while state != DONE:
 
-        # Ajusta a velocidade do jogo.
-        clock.tick(FPS)
+        clock.tick(FPS)  # Ajusta a velocidade do jogo.
 
         # ----- Trata eventos
         for event in pygame.event.get():
@@ -54,23 +48,30 @@ def game_screen(screen):
 
         # Verifica se apertou alguma tecla.
             if event.type == pygame.KEYDOWN:
-                # Dependendo da tecla, altera a velocidade.
-                if event.key == pygame.K_SPACE:
+                if event.key == pygame.K_SPACE: # Dependendo da tecla, altera a velocidade.
                     player.state = FLYING   
 
             if event.type == pygame.KEYUP:
-                # Dependendo da tecla, altera a velocidade.
-                if event.key == pygame.K_SPACE:
+                if event.key == pygame.K_SPACE: # Dependendo da tecla, altera a velocidade.
                     player.state = FALLING
                     
+            # Verifica colisão com os pássaros
+            if Player.collided and Player.collide_birds(world_sprites):
+                Player.collided = True  # Define o jogador como colidido
+
+           # elif event.type == pygame.KEYDOWN:
+                # Aqui você pode adicionar tratamentos de eventos de teclas globais
+                #pass
+
+            # Reinicia o jogo se o jogador pressionar a tecla "Esc"
+            keys = pygame.key.get_pressed()
+            if keys[pygame.K_ESCAPE]:
+                
+                Player.reset()  # Se desejar reiniciar o jogador
+
         # Depois de processar os eventos.
         # Atualiza a acao de cada sprite. O grupo chama o método update() de cada Sprite dentre dele.
         all_sprites.update()
-
-        if not player.collided and player.collide_birds(world_sprites):
-        # Define o jogador como colidido
-            Player.collided = True
-
 
         # Verifica se algum bloco saiu da janela
         for bird in world_sprites:
@@ -102,4 +103,4 @@ def game_screen(screen):
 
         # Depois de desenhar tudo, inverte o display.
         pygame.display.flip()
-    return state, game_run
+    return state
