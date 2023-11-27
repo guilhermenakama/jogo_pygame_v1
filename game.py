@@ -19,9 +19,10 @@ while state != QUIT:
     if state == INIT:
         state = init_screen(screen)
     elif state == GAME:
-        state = game_screen(screen)     
+        state = game_screen(screen)            
     else:
         state = QUIT
 
 # ===== Finalização =====
 pygame.quit()  # Função do PyGame que finaliza os recursos utilizados    
+  
