@@ -10,6 +10,7 @@ class Player(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.state = STILL
         self.collided = False  # Adiciona o atributo collided
+        self.speedx = 0 
 
         self.image = assets[PLAYER_IMG]
         self.mask = pygame.mask.from_surface(self.image)
@@ -29,7 +30,16 @@ class Player(pygame.sprite.Sprite):
             Player.speedy = 0
 
         self.rect.y += Player.speedy
+        self.rect.x += self.speedx 
 
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_LEFT]:
+            self.speedx = 0   # Ajuste a velocidade conforme necessário
+        elif keys[pygame.K_RIGHT]:
+            self.speedx = 5  # Ajuste a velocidade conforme necessário
+        else:
+            self.speedx = 0 
+            
         # Mantem dentro da tela
         if self.rect.top < 0:
             self.rect.top = 0
@@ -38,7 +48,7 @@ class Player(pygame.sprite.Sprite):
             self.rect.bottom = HEIGHT
 
         # Verifica colisão com os pássaros
-        #collisions = pygame.sprite.spritecollide(self, True)
+        #collisions = pygame. sprite.spritecollide(self, True)
         #if collisions:
             # Encerra o programa em caso de colisão
             #self.collided = True
@@ -64,8 +74,8 @@ class Bird(pygame.sprite.Sprite):
         self.mask = pygame.mask.from_surface(self.image)
         self.rect = self.image.get_rect()
         self.rect.x = WIDTH - BIRD_WIDTH
-        self.rect.y = random.randint(0, HEIGHT)
-        self.speedx = WORLD_SPEED
+        self.rect.y = random.randint( HEIGHT // 4, HEIGHT // 1.5)
+        self.speedx = random.uniform(-8,-1)
 
     def update(self):
         # Atualizando a posição do pássaro
@@ -75,4 +85,6 @@ class Bird(pygame.sprite.Sprite):
         if self.rect.top > HEIGHT or self.rect.right < 0 or self.rect.left > WIDTH:
             self.rect.x = WIDTH-BIRD_WIDTH
             self.rect.y = random.randint(0, HEIGHT)
-            self.speedx = WORLD_SPEED
+            self.speedx = random.uniform(-1,-1)
+
+    
