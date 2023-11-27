@@ -10,7 +10,6 @@ class Player(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.state = STILL
         self.collided = False  # Adiciona o atributo collided
-        self.speedx = 0 
 
         self.image = assets[PLAYER_IMG]
         self.mask = pygame.mask.from_surface(self.image)
@@ -30,15 +29,6 @@ class Player(pygame.sprite.Sprite):
             Player.speedy = 0
 
         self.rect.y += Player.speedy
-        self.rect.x += self.speedx 
-
-        keys = pygame.key.get_pressed()
-        if keys[pygame.K_LEFT]:
-            self.speedx = -5   # Ajuste a velocidade conforme necessário
-        elif keys[pygame.K_RIGHT]:
-            self.speedx = 5  # Ajuste a velocidade conforme necessário
-        else:
-            self.speedx = 0 
             
         # Mantem dentro da tela
         if self.rect.top < 0:

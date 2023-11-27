@@ -31,7 +31,7 @@ def game_screen(screen):
         world_sprites.add(bird)
         # Adiciona também no grupo de todos os sprites para serem atualizados e desenhados
         all_sprites.add(bird)
-    
+        
     # Estados do Player
     DONE = 0
     PLAYING = 1
