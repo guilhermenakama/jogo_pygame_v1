@@ -18,11 +18,15 @@ class Player(pygame.sprite.Sprite):
         self.rect.bottom = HEIGHT
         self.speedy = 0
         self.assets = assets 
+        self.frame = 0
 
     def update(self):
         # Atualização da posição do jogador
         Player.speedy = GRAVITY
-    
+
+        self.last_update = pygame.time.get_ticks()
+        self.frame_ticks = 1
+        
         if self.state == FLYING:
             Player.speedy = -6
         if self.state == STILL:
@@ -43,6 +47,27 @@ class Player(pygame.sprite.Sprite):
             # Encerra o programa em caso de colisão
             #self.collided = True
             #Player.reset_player(self)
+        
+        now = pygame.time.get_ticks()
+        # Verifica quantos ticks se passaram desde a ultima mudança de frame.
+        elapsed_ticks = now - self.last_update
+
+        # Se já está na hora de mudar de imagem...
+        if elapsed_ticks > self.frame_ticks:
+            # Marca o tick da nova imagem.
+            self.last_update = now
+
+            # Avança um quadro.
+            self.frame += 1 % 2
+
+            # Verifica se já chegou no final da animação.
+            
+       
+            # Se ainda não chegou ao fim da explosão, troca de imagem.
+            center = self.rect.center
+            self.image = self.rena_anim[self.frame]
+            self.rect = self.image.get_rect()
+            self.rect.center = center
 
     def collide_birds(self, birds_group):
         # Atualização se jogador colidiu com algum pássaro
@@ -53,6 +78,7 @@ class Player(pygame.sprite.Sprite):
         player.state = STILL
         player.rect.centerx = WIDTH / 10
         player.rect.bottom = HEIGHT
+
             
 
 class Bird(pygame.sprite.Sprite):
@@ -65,7 +91,7 @@ class Bird(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = WIDTH - BIRD_WIDTH
         self.rect.y = random.randint( HEIGHT // 4, HEIGHT // 1.5)
-        self.speedx = random.uniform(-8,-1)
+        self.speedx = random.uniform(-3,-1)
 
     def update(self):
         # Atualizando a posição do pássaro
@@ -77,4 +103,6 @@ class Bird(pygame.sprite.Sprite):
             self.rect.y = random.randint(0, HEIGHT)
             self.speedx = random.uniform(-1,-1)
 
-    
+
+
+

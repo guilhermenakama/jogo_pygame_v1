@@ -6,7 +6,7 @@ from game_screen import *
 from init_screen import *
 
 # Inicialização do Pygame
-pygame.init()                           
+pygame.init() 
 pygame.mixer.init()
 
 # ----- Gera tela principal
