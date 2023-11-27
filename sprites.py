@@ -34,7 +34,7 @@ class Player(pygame.sprite.Sprite):
 
         keys = pygame.key.get_pressed()
         if keys[pygame.K_LEFT]:
-            self.speedx = 0   # Ajuste a velocidade conforme necessário
+            self.speedx = -5   # Ajuste a velocidade conforme necessário
         elif keys[pygame.K_RIGHT]:
             self.speedx = 5  # Ajuste a velocidade conforme necessário
         else:
