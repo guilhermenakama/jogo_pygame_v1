@@ -41,15 +41,14 @@ def game_screen(screen):
     GAMEOVER = 5
 
     lives = 3
-
     score = 0
-
-    state = PLAYING
+    world_speed = WORLD_SPEED
 
     pygame.mixer.music.load('assets/snd/electronic-rock-king-around-here-15045.mp3')
     pygame.mixer.music.set_volume(0.4)
     pygame.mixer.music.play(loops=-1)
 
+    state = PLAYING
     while state == PLAYING:
 
         clock.tick(FPS)  # Ajusta a velocidade do jogo.
@@ -74,13 +73,11 @@ def game_screen(screen):
         if pygame.sprite.spritecollide(player, world_sprites, True):
          # Verifica colisão com os pássaros e define jogador como colidido
             player.collided = True
-
             lives -= 1
 
             if player.collided == True and lives == 0:
                 state = GAMEOVER
             
-
         # Reinicia o jogo se o jogador pressionar a tecla "Esc"
         keys = pygame.key.get_pressed()
         if keys[pygame.K_ESCAPE]:
@@ -103,8 +100,11 @@ def game_screen(screen):
         # A cada loop, redesenha o fundo e os sprites
         screen.fill(BLACK)
 
+        # Aumenta a velocidade da imagem de fundo a cada 100 pontos
+        world_speed = WORLD_SPEED - (score/4) // 100
+
         # Atualiza a posição da imagem de fundo.
-        background_rect.x += WORLD_SPEED
+        background_rect.x += world_speed
 
         # Se o fundo saiu da janela, faz ele voltar para dentro.
         if background_rect.right < 0:
