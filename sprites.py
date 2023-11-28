@@ -65,7 +65,7 @@ class Player(pygame.sprite.Sprite):
        
             # Se ainda não chegou ao fim da explosão, troca de imagem.
             center = self.rect.center
-            self.image = self.rena_anim[self.frame]
+            #self.image = self.rena_anim[self.frame]
             self.rect = self.image.get_rect()
             self.rect.center = center
 
@@ -90,8 +90,8 @@ class Bird(pygame.sprite.Sprite):
         self.mask = pygame.mask.from_surface(self.image)
         self.rect = self.image.get_rect()
         self.rect.x = WIDTH - BIRD_WIDTH
-        self.rect.y = random.randint( HEIGHT // 4, HEIGHT // 1.5)
-        self.speedx = random.uniform(-3,-1)
+        self.rect.y = random.randint( HEIGHT // 10, HEIGHT // 1)
+        self.speedx = random.uniform(-6,-2)
 
     def update(self):
         # Atualizando a posição do pássaro
@@ -101,7 +101,7 @@ class Bird(pygame.sprite.Sprite):
         if self.rect.top > HEIGHT or self.rect.right < 0 or self.rect.left > WIDTH:
             self.rect.x = WIDTH-BIRD_WIDTH
             self.rect.y = random.randint(0, HEIGHT)
-            self.speedx = random.uniform(-1,-1)
+            self.speedx = random.uniform(-6,-2)
 
 
 

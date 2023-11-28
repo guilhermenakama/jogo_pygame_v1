@@ -31,8 +31,8 @@ QUIT = 2
 
 # Configurações de jogabilidade
 GRAVITY = 4
-WORLD_SPEED = -3
-INITIAL_BIRDS = 5
+WORLD_SPEED = -8
+INITIAL_BIRDS = 10
 
 # Estados do Player
 DONE = 0
