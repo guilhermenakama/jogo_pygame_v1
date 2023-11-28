@@ -8,6 +8,8 @@ PLAYER_IMG = 'player0_img'
 PLAYER2_IMG='player1_img'
 BIRD_IMG = 'snowball_img'
 
+
+
 def load_assets():
     assets = {}
 
@@ -16,6 +18,7 @@ def load_assets():
     assets[PLAYER_IMG] = pygame.transform.scale(assets[PLAYER_IMG], (PLAYER_WIDTH, PLAYER_HEIGHT))
     assets[BIRD_IMG] = pygame.image.load(os.path.join(IMG_DIR, 'Snowball.png')).convert_alpha()
     assets[BIRD_IMG] = pygame.transform.scale(assets[BIRD_IMG], (BIRD_WIDTH, BIRD_HEIGHT))
+    
    
     assets[BACKGROUND_IMG] = pygame.image.load(os.path.join(IMG_DIR, 'background.jpg')).convert()
     assets[BACKGROUND_IMG] = pygame.transform.scale(assets[BACKGROUND_IMG], (WIDTH, HEIGHT))
@@ -30,5 +33,5 @@ def load_assets():
         img = pygame.transform.scale(img, (32, 32))
         rena_anim.append(img)
     assets["rena_anim"] = rena_anim
-        # Carrega os sons do jogo
+    
     return assets

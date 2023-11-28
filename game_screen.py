@@ -40,6 +40,11 @@ def game_screen(screen):
     FLYING = 4
 
     state = PLAYING
+
+    pygame.mixer.music.load('assets/snd/electronic-rock-king-around-here-15045.mp3')
+    pygame.mixer.music.set_volume(0.4)
+    pygame.mixer.music.play(loops=-1)
+
     while state != DONE:
 
         clock.tick(FPS)  # Ajusta a velocidade do jogo.
