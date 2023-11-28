@@ -38,6 +38,7 @@ def game_screen(screen):
     STILL = 2
     FALLING = 3
     FLYING = 4
+    GAMEOVER = 5
 
     lives = 3
 
@@ -49,7 +50,7 @@ def game_screen(screen):
     pygame.mixer.music.set_volume(0.4)
     pygame.mixer.music.play(loops=-1)
 
-    while state != DONE:
+    while state == PLAYING:
 
         clock.tick(FPS)  # Ajusta a velocidade do jogo.
 
@@ -77,7 +78,7 @@ def game_screen(screen):
             lives -= 1
 
             if player.collided == True and lives == 0:
-                state = DONE
+                state = GAMEOVER
             
 
         # Reinicia o jogo se o jogador pressionar a tecla "Esc"
@@ -135,3 +136,5 @@ def game_screen(screen):
 
         # Depois de desenhar tudo, inverte o display.
         pygame.display.flip()
+
+    return state

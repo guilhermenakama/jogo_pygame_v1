@@ -4,6 +4,7 @@ from config import *
 from sprites import *
 from game_screen import *
 from init_screen import *
+from game_end import *
 
 # Inicialização do Pygame
 pygame.init()        
@@ -19,7 +20,9 @@ while state != QUIT:
     if state == INIT:
         state = init_screen(screen)
     elif state == GAME:
-        state = game_screen(screen)            
+        state = game_screen(screen) 
+    elif state == GAMEOVER:
+        state =  endgame_screen(screen)              
     else:
         state = QUIT
 

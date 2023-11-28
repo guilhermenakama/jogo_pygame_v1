@@ -28,8 +28,8 @@ def load_assets():
     assets[BACKGROUND_INIT_IMG] = pygame.image.load(os.path.join(IMG_DIR, 'background_init.png')).convert()
     assets[BACKGROUND_INIT_IMG] = pygame.transform.scale(assets[BACKGROUND_INIT_IMG], (WIDTH, HEIGHT))
 
-    assets[BACKGROUND_END] = pygame.image.load(os.path.join(IMG_DIR, 'background_end.png')).convert()
-    assets[BACKGROUND_END] = pygame.transform.scale(assets[BACKGROUND_INIT_IMG], (WIDTH, HEIGHT))
+    assets[BACKGROUND_END_IMG] = pygame.image.load(os.path.join(IMG_DIR, 'background_end.png')).convert()
+    assets[BACKGROUND_END_IMG] = pygame.transform.scale(assets[BACKGROUND_END_IMG], (WIDTH, HEIGHT))
 
     rena_anim = []
     for i in range(2):
