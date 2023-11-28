@@ -39,6 +39,10 @@ def game_screen(screen):
     FALLING = 3
     FLYING = 4
 
+    lives = 3
+
+    score = 0
+
     state = PLAYING
 
     pygame.mixer.music.load('assets/snd/electronic-rock-king-around-here-15045.mp3')
@@ -66,16 +70,21 @@ def game_screen(screen):
                 if event.key == pygame.K_SPACE:
                     player.state = FALLING
         
-        if not player.collided and pygame.sprite.spritecollide(player, world_sprites, True):
+        if pygame.sprite.spritecollide(player, world_sprites, True):
          # Verifica colisão com os pássaros e define jogador como colidido
             player.collided = True
-            reset_player(player)
+
+            lives -= 1
+
+            if player.collided == True and lives == 0:
+                state = DONE
+            
 
         # Reinicia o jogo se o jogador pressionar a tecla "Esc"
         keys = pygame.key.get_pressed()
         if keys[pygame.K_ESCAPE]:
             state = DONE
-            reset_player(player)  # Se desejar reiniciar o jogador
+              # Se desejar reiniciar o jogador
 
         all_sprites.update()  # Depois de processar os eventos, atualiza a acao de cada sprite e chama o update de cada um.
 
@@ -87,6 +96,7 @@ def game_screen(screen):
                 new_bird = Bird(assets)
                 all_sprites.add(new_bird)
                 world_sprites.add(new_bird)
+                
 
         # A cada loop, redesenha o fundo e os sprites
         screen.fill(BLACK)
@@ -97,6 +107,7 @@ def game_screen(screen):
         # Se o fundo saiu da janela, faz ele voltar para dentro.
         if background_rect.right < 0:
             background_rect.x += background_rect.width
+            score += 100
 
         # Desenha o fundo e uma cópia para a direita.
         # Assumimos que a imagem selecionada ocupa pelo menos o tamanho da janela.
@@ -108,6 +119,18 @@ def game_screen(screen):
         screen.blit(background, background_rect2)
 
         all_sprites.draw(screen)
+
+        text_surface = assets[SCORE_FONT].render("{:08d}".format(score), True, (255, 255, 0))
+        text_rect = text_surface.get_rect()
+        text_rect.midtop = (WIDTH / 2,  10)
+        background.blit(text_surface, text_rect)
+
+        text_surface = assets['score_font'].render(chr(9829) * lives, True, (255, 0, 0))
+        text_rect = text_surface.get_rect()
+        text_rect.bottomleft = (10, HEIGHT - 10)
+        background.blit(text_surface, text_rect)
+
+        pygame.display.update()
 
         # Depois de desenhar tudo, inverte o display.
         pygame.display.flip()

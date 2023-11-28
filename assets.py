@@ -7,6 +7,7 @@ BACKGROUND_IMG = 'background'
 PLAYER_IMG = 'player0_img'
 PLAYER2_IMG='player1_img'
 BIRD_IMG = 'snowball_img'
+SCORE_FONT = 'score_font'
 
 
 
@@ -18,6 +19,7 @@ def load_assets():
     assets[PLAYER_IMG] = pygame.transform.scale(assets[PLAYER_IMG], (PLAYER_WIDTH, PLAYER_HEIGHT))
     assets[BIRD_IMG] = pygame.image.load(os.path.join(IMG_DIR, 'Snowball.png')).convert_alpha()
     assets[BIRD_IMG] = pygame.transform.scale(assets[BIRD_IMG], (BIRD_WIDTH, BIRD_HEIGHT))
+    assets[SCORE_FONT] = pygame.font.Font('assets/fnt/PressStart2P-Regular.ttf', 28)
     
    
     assets[BACKGROUND_IMG] = pygame.image.load(os.path.join(IMG_DIR, 'background.jpg')).convert()
