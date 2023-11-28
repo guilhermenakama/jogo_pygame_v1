@@ -20,6 +20,10 @@ def init_screen(initial_screen):
     pygame.mixer.music.set_volume(0.4)
     pygame.mixer.music.play(loops=-1)
 
+    font = pygame.font.SysFont(None, 48, italic=True)
+    text = font.render('Pressione espaço para jogar !', True, (0, 0, 255))
+
+
     running = True
     while running:
 
@@ -37,6 +41,8 @@ def init_screen(initial_screen):
                     if event.key == pygame.K_SPACE:
                         state = GAME
                         running = False
+            
+            background_init.blit(text, (285, 375))
 
         # A cada loop, redesenha o fundo e os sprites
         initial_screen.fill(BLACK)
