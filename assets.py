@@ -4,6 +4,7 @@ from config import *
 
 BACKGROUND_INIT_IMG = 'background_init'
 BACKGROUND_IMG = 'background'
+BACKGROUND_END = 'background_end'
 PLAYER_IMG = 'player_img'
 PLAYER2_IMG='player1_img'
 BIRD_IMG = 'snowball_img'
@@ -24,8 +25,11 @@ def load_assets():
    
     assets[BACKGROUND_IMG] = pygame.image.load(os.path.join(IMG_DIR, 'background.jpg')).convert()
     assets[BACKGROUND_IMG] = pygame.transform.scale(assets[BACKGROUND_IMG], (WIDTH, HEIGHT))
-    assets[BACKGROUND_INIT_IMG] = pygame.image.load(os.path.join(IMG_DIR, 'background_init.jpg')).convert()
+    assets[BACKGROUND_INIT_IMG] = pygame.image.load(os.path.join(IMG_DIR, 'background_init.png')).convert()
     assets[BACKGROUND_INIT_IMG] = pygame.transform.scale(assets[BACKGROUND_INIT_IMG], (WIDTH, HEIGHT))
+
+    assets[BACKGROUND_END] = pygame.image.load(os.path.join(IMG_DIR, 'background_end.png')).convert()
+    assets[BACKGROUND_END] = pygame.transform.scale(assets[BACKGROUND_INIT_IMG], (WIDTH, HEIGHT))
 
     rena_anim = []
     for i in range(2):

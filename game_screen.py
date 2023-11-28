@@ -84,6 +84,7 @@ def game_screen(screen):
         keys = pygame.key.get_pressed()
         if keys[pygame.K_ESCAPE]:
             state = DONE
+
               # Se desejar reiniciar o jogador
 
         all_sprites.update()  # Depois de processar os eventos, atualiza a acao de cada sprite e chama o update de cada um.
