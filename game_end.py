@@ -17,9 +17,9 @@ def endgame_screen(game_end_screen):
     background_end = assets[BACKGROUND_END_IMG]
     background_end_rect = background_end.get_rect()
 
-    pygame.mixer.music.load('assets/snd/music-box-we-wish-you-a-merry-christmas-79501.mp3')
-    pygame.mixer.music.set_volume(0.4)
-    pygame.mixer.music.play(loops=-1)
+    pygame.mixer.music.load('assets/snd/game-over-super-mario-made-with-Voicemod-technology.mp3')
+    pygame.mixer.music.set_volume(0.8)
+    pygame.mixer.music.play(loops=1)
 
 
     state = GAMEOVER
