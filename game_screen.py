@@ -123,12 +123,12 @@ def game_screen(screen):
         text_surface = assets[SCORE_FONT].render("{:08d}".format(score), True, (255, 255, 0))
         text_rect = text_surface.get_rect()
         text_rect.midtop = (WIDTH / 2,  10)
-        background.blit(text_surface, text_rect)
+        screen.blit(text_surface, text_rect)
 
         text_surface = assets['score_font'].render(chr(9829) * lives, True, (255, 0, 0))
         text_rect = text_surface.get_rect()
         text_rect.bottomleft = (10, HEIGHT - 10)
-        background.blit(text_surface, text_rect)
+        screen.blit(text_surface, text_rect)
 
         pygame.display.update()
 
