@@ -4,7 +4,7 @@ from config import *
 
 BACKGROUND_INIT_IMG = 'background_init'
 BACKGROUND_IMG = 'background'
-BACKGROUND_END = 'background_end'
+BACKGROUND_END_IMG = 'background_end'
 PLAYER_IMG = 'player_img'
 PLAYER2_IMG='player1_img'
 BIRD_IMG = 'snowball_img'
@@ -40,4 +40,5 @@ def load_assets():
         rena_anim.append(img)
     assets["rena_anim"] = rena_anim
     
+
     return assets
