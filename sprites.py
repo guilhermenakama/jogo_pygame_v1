@@ -25,7 +25,7 @@ class Player(pygame.sprite.Sprite):
         Player.speedy = GRAVITY
 
         self.last_update = pygame.time.get_ticks()
-        self.frame_ticks = 1
+        self.frame_ticks = 50
         
         if self.state == FLYING:
             Player.speedy = -6
