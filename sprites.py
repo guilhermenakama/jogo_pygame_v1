@@ -90,7 +90,7 @@ class Bird(pygame.sprite.Sprite):
         self.mask = pygame.mask.from_surface(self.image)
         self.rect = self.image.get_rect()
         self.rect.x = WIDTH - BIRD_WIDTH
-        self.rect.y = random.randint( HEIGHT // 4, HEIGHT // 1.5)
+        self.rect.y = random.randint( HEIGHT // 10, HEIGHT // 1)
         self.speedx = random.uniform(-6,-2)
 
     def update(self):
