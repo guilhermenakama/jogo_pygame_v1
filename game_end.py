@@ -6,7 +6,8 @@ from os import path
 from game_screen import *
 
 
-def endgame_screen(game_end_screen):
+
+def endgame_screen(game_end_screen, score):
     # Variável para o ajuste de velocidade
     clock = pygame.time.Clock()
 
@@ -20,6 +21,11 @@ def endgame_screen(game_end_screen):
     pygame.mixer.music.load('assets/snd/game-over-super-mario-made-with-Voicemod-technology.mp3')
     pygame.mixer.music.set_volume(0.8)
     pygame.mixer.music.play(loops=1)
+
+    text_surface = assets[SCORE_FONT].render('Pontuação final:'"{:08d}".format(score), True, (0, 0, 0))
+    text_rect = text_surface.get_rect()
+    text_rect.midtop = (WIDTH / 2,  100)
+    background_end.blit(text_surface, text_rect)
 
 
     state = GAMEOVER

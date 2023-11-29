@@ -9,7 +9,7 @@ from game_end import *
 # Inicialização do Pygame
 pygame.init()        
 pygame.mixer.init()
-
+ 
 # ----- Gera tela principal
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Missão Natal")
@@ -20,9 +20,11 @@ while state != QUIT:
     if state == INIT:
         state = init_screen(screen)
     elif state == GAME:
-        state = game_screen(screen) 
+        x = game_screen(screen)
+        state = x[0]
+        score = x[1]
     elif state == GAMEOVER:
-        state =  endgame_screen(screen)              
+        state =  endgame_screen(screen, score)           
     else:
         state = QUIT
 
