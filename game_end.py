@@ -27,7 +27,6 @@ def endgame_screen(game_end_screen, score):
     text_rect.midtop = (WIDTH / 2,  100)
     background_end.blit(text_surface, text_rect)
 
-
     state = GAMEOVER
 
     while state == GAMEOVER:

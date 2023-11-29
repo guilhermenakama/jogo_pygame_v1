@@ -11,7 +11,6 @@ SNOW_IMG = 'snowball_img'
 SCORE_FONT = 'score_font'
 
 
-
 def load_assets():
     assets = {}
 
@@ -22,7 +21,6 @@ def load_assets():
     assets[SNOW_IMG] = pygame.transform.scale(assets[SNOW_IMG], (SNOW_WIDTH, SNOW_HEIGHT))
     assets[SCORE_FONT] = pygame.font.Font('assets/fnt/PressStart2P-Regular.ttf', 28)
     
-   
     assets[BACKGROUND_IMG] = pygame.image.load(os.path.join(IMG_DIR, 'background.jpg')).convert()
     assets[BACKGROUND_IMG] = pygame.transform.scale(assets[BACKGROUND_IMG], (WIDTH, HEIGHT))
     assets[BACKGROUND_INIT_IMG] = pygame.image.load(os.path.join(IMG_DIR, 'background_init.png')).convert()

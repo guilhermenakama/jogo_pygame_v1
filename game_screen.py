@@ -71,7 +71,7 @@ def game_screen(screen):
                     player.state = FALLING
         
         if pygame.sprite.spritecollide(player, world_sprites, True):
-         # Verifica colisão com os pássaros e define jogador como colidido
+         # Verifica colisão com os obstáculos e define jogador como colidido
             player.collided = True
             lives -= 1
 
@@ -90,12 +90,16 @@ def game_screen(screen):
         # Verifica se algum bloco saiu da janela
         for snow in world_sprites:
             if snow.rect.right < 0:
-                # Destrói o pássaro e cria um novo no final da tela
+                # Destrói a bola de neve e cria uma nova no final da tela
                 snow.kill()
                 new_snow = snow(assets)
                 all_sprites.add(new_snow)
                 world_sprites.add(new_snow)
-                
+        
+        snow_speed = 0
+        if score >= 0:
+            snow_speed -= (score/10) // 100
+            snow.speedx = snow_speed
 
         # A cada loop, redesenha o fundo e os sprites
         screen.fill(BLACK)
@@ -123,6 +127,7 @@ def game_screen(screen):
         screen.blit(background, background_rect2)
 
         all_sprites.draw(screen)
+        world_sprites.draw(screen)
 
         text_surface = assets[SCORE_FONT].render("{:08d}".format(score), True, (255, 255, 0))
         text_rect = text_surface.get_rect()

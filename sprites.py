@@ -3,7 +3,6 @@ import random
 from assets import *
 from config import *
 
-
 class Player(pygame.sprite.Sprite):
     def __init__(self, assets):
         # Construtor da classe mãe (Sprite).
@@ -61,8 +60,6 @@ class Player(pygame.sprite.Sprite):
             self.frame += 1 % 2
 
             # Verifica se já chegou no final da animação.
-            
-       
             # Se ainda não chegou ao fim da explosão, troca de imagem.
             center = self.rect.center
             #self.image = self.rena_anim[self.frame]
@@ -70,7 +67,7 @@ class Player(pygame.sprite.Sprite):
             self.rect.center = center
 
     def collide_snows(self, snows_group):
-        # Atualização se jogador colidiu com algum pássaro
+        # Atualização se jogador colidiu com alguma bola de neve
         return pygame.sprite.spritecollide(self, snows_group, False)
 
     @staticmethod
@@ -94,15 +91,14 @@ class Snow(pygame.sprite.Sprite):
         self.speedx = random.uniform(-6,-2)
 
     def update(self):
-        # Atualizando a posição do pássaro
+        # Atualizando a posição da bola de neve
         self.rect.x += self.speedx
 
-        # Se o pássaro passar do final da tela, volta para cima e sorteia novas posições e velocidades
+        # Se a bola de neve passar do final da tela, volta para cima e sorteia novas posições e velocidades
         if self.rect.top > HEIGHT or self.rect.right < 0 or self.rect.left > WIDTH:
             self.rect.x = WIDTH-SNOW_WIDTH
             self.rect.y = random.randint(0, HEIGHT)
             self.speedx = random.uniform(-6,-2)
-
 
 
 
