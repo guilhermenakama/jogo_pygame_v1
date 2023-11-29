@@ -11,8 +11,8 @@ HEIGHT = 600 # Altura da tela
 FPS = 60 # Frames por segundo
 
 # Define tamanhos
-BIRD_WIDTH = 90
-BIRD_HEIGHT = 72
+SNOW_WIDTH = 90
+SNOW_HEIGHT = 72
 PLAYER_WIDTH = 90
 PLAYER_HEIGHT = 72
 
@@ -32,7 +32,7 @@ QUIT = 2
 # Configurações de jogabilidade
 GRAVITY = 4
 WORLD_SPEED = -5
-INITIAL_BIRDS = 5
+INITIAL_SNOWS = 5
 
 # Estados do Player
 DONE = 0

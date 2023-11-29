@@ -69,9 +69,9 @@ class Player(pygame.sprite.Sprite):
             self.rect = self.image.get_rect()
             self.rect.center = center
 
-    def collide_birds(self, birds_group):
+    def collide_snows(self, snows_group):
         # Atualização se jogador colidiu com algum pássaro
-        return pygame.sprite.spritecollide(self, birds_group, False)
+        return pygame.sprite.spritecollide(self, snows_group, False)
 
     @staticmethod
     def reset_player(player):
@@ -81,15 +81,15 @@ class Player(pygame.sprite.Sprite):
 
             
 
-class Bird(pygame.sprite.Sprite):
+class Snow(pygame.sprite.Sprite):
     def __init__(self, assets):
         # Construtor da classe mãe (Sprite).
         pygame.sprite.Sprite.__init__(self)
 
-        self.image = assets[BIRD_IMG]
+        self.image = assets[SNOW_IMG]
         self.mask = pygame.mask.from_surface(self.image)
         self.rect = self.image.get_rect()
-        self.rect.x = WIDTH - BIRD_WIDTH
+        self.rect.x = WIDTH - SNOW_WIDTH
         self.rect.y = random.randint( HEIGHT // 10, HEIGHT // 1)
         self.speedx = random.uniform(-6,-2)
 
@@ -99,7 +99,7 @@ class Bird(pygame.sprite.Sprite):
 
         # Se o pássaro passar do final da tela, volta para cima e sorteia novas posições e velocidades
         if self.rect.top > HEIGHT or self.rect.right < 0 or self.rect.left > WIDTH:
-            self.rect.x = WIDTH-BIRD_WIDTH
+            self.rect.x = WIDTH-SNOW_WIDTH
             self.rect.y = random.randint(0, HEIGHT)
             self.speedx = random.uniform(-6,-2)
 

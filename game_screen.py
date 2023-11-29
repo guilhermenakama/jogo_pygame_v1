@@ -26,11 +26,11 @@ def game_screen(screen):
     # Esses sprites vão andar junto com o mundo (fundo)
     world_sprites = pygame.sprite.Group()
     # Cria blocos espalhados em posições aleatórias do mapa
-    for i in range(INITIAL_BIRDS):
-        bird = Bird(assets)
-        world_sprites.add(bird)
+    for i in range(INITIAL_SNOWS):
+        snow = Snow(assets)
+        world_sprites.add(snow)
         # Adiciona também no grupo de todos os sprites para serem atualizados e desenhados
-        all_sprites.add(bird)
+        all_sprites.add(snow)
     
     # Estados do Player
     DONE = 0
@@ -88,13 +88,13 @@ def game_screen(screen):
         all_sprites.update()  # Depois de processar os eventos, atualiza a acao de cada sprite e chama o update de cada um.
 
         # Verifica se algum bloco saiu da janela
-        for bird in world_sprites:
-            if bird.rect.right < 0:
+        for snow in world_sprites:
+            if snow.rect.right < 0:
                 # Destrói o pássaro e cria um novo no final da tela
-                bird.kill()
-                new_bird = Bird(assets)
-                all_sprites.add(new_bird)
-                world_sprites.add(new_bird)
+                snow.kill()
+                new_snow = snow(assets)
+                all_sprites.add(new_snow)
+                world_sprites.add(new_snow)
                 
 
         # A cada loop, redesenha o fundo e os sprites
