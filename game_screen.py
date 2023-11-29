@@ -110,6 +110,8 @@ def game_screen(screen):
         if background_rect.right < 0:
             background_rect.x += background_rect.width
             score += 100
+            if score % 500 == 0:
+                lives += 1
 
         # Desenha o fundo e uma cópia para a direita.
         # Assumimos que a imagem selecionada ocupa pelo menos o tamanho da janela.
