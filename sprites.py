@@ -13,7 +13,7 @@ class Player(pygame.sprite.Sprite):
         self.image = assets[PLAYER_IMG]
         self.mask = pygame.mask.from_surface(self.image)
         self.rect = self.image.get_rect()
-        self.rect.centerx = WIDTH / 10
+        self.rect.centerx = WIDTH / 8
         self.rect.bottom = HEIGHT
         self.speedy = 0
         self.assets = assets 
@@ -27,7 +27,7 @@ class Player(pygame.sprite.Sprite):
         self.frame_ticks = 50
         
         if self.state == FLYING:
-            Player.speedy = -6
+            Player.speedy = -5
         if self.state == STILL:
             Player.speedy = 0
 
@@ -87,7 +87,7 @@ class Snow(pygame.sprite.Sprite):
         self.mask = pygame.mask.from_surface(self.image)
         self.rect = self.image.get_rect()
         self.rect.x = WIDTH - SNOW_WIDTH
-        self.rect.y = random.randint( HEIGHT // 10, HEIGHT // 1)
+        self.rect.y = random.randint(0, HEIGHT - SNOW_HEIGHT)
         self.speedx = random.uniform(-6,-2)
 
     def update(self):
@@ -97,7 +97,7 @@ class Snow(pygame.sprite.Sprite):
         # Se a bola de neve passar do final da tela, volta para cima e sorteia novas posições e velocidades
         if self.rect.top > HEIGHT or self.rect.right < 0 or self.rect.left > WIDTH:
             self.rect.x = WIDTH-SNOW_WIDTH
-            self.rect.y = random.randint(0, HEIGHT)
+            self.rect.y = random.randint(0, HEIGHT - SNOW_HEIGHT)
             self.speedx = random.uniform(-6,-2)
 
 

@@ -75,6 +75,11 @@ def game_screen(screen):
             player.collided = True
             lives -= 1
 
+            snow = Snow(assets)
+            world_sprites.add(snow)
+            all_sprites.add(snow)
+            # Adiciona também no grupo de todos os sprites para serem atualizados e desenhados
+
             if player.collided == True and lives == 0:
                 state = GAMEOVER
             
@@ -92,20 +97,20 @@ def game_screen(screen):
             if snow.rect.right < 0:
                 # Destrói a bola de neve e cria uma nova no final da tela
                 snow.kill()
-                new_snow = snow(assets)
-                all_sprites.add(new_snow)
+                new_snow = Snow(assets)
                 world_sprites.add(new_snow)
+                all_sprites.add(new_snow)
         
         snow_speed = 0
         if score >= 0:
-            snow_speed -= (score/10) // 100
+            snow_speed -= (score/3) // 100
             snow.speedx = snow_speed
 
         # A cada loop, redesenha o fundo e os sprites
         screen.fill(BLACK)
 
         # Aumenta a velocidade da imagem de fundo a cada 100 pontos
-        world_speed = WORLD_SPEED - (score/4) // 100
+        world_speed = WORLD_SPEED - (score/6) // 100
 
         # Atualiza a posição da imagem de fundo.
         background_rect.x += world_speed
@@ -114,7 +119,7 @@ def game_screen(screen):
         if background_rect.right < 0:
             background_rect.x += background_rect.width
             score += 100
-            if score % 500 == 0:
+            if score % 800 == 0:
                 lives += 1
 
         # Desenha o fundo e uma cópia para a direita.

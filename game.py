@@ -23,7 +23,6 @@ while state != QUIT:
         x = game_screen(screen)
         state = x[0]
         score = x[1]
-    elif state == GAMEOVER:
         state =  endgame_screen(screen, score)           
     else:
         state = QUIT

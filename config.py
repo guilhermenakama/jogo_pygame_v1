@@ -31,8 +31,8 @@ QUIT = 2
 
 # Configurações de jogabilidade
 GRAVITY = 4
-WORLD_SPEED = -5
-INITIAL_SNOWS = 5
+WORLD_SPEED = -6
+INITIAL_SNOWS = 6
 
 # Estados do Player
 DONE = 0
