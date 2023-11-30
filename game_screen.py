@@ -44,10 +44,12 @@ def game_screen(screen):
     score = 0
     world_speed = WORLD_SPEED
 
+    # Carrega as músicas
     pygame.mixer.music.load('assets/snd/electronic-rock-king-around-here-15045.mp3')
     pygame.mixer.music.set_volume(0.4)
     pygame.mixer.music.play(loops=-1)
 
+    # Looping principal do jogo
     state = PLAYING
     while state == PLAYING:
 

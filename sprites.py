@@ -33,19 +33,12 @@ class Player(pygame.sprite.Sprite):
 
         self.rect.y += Player.speedy
             
-        # Mantem dentro da tela
+        # Mantem o player dentro da tela
         if self.rect.top < 0:
             self.rect.top = 0
         if self.rect.bottom > HEIGHT:
             self.state = STILL
             self.rect.bottom = HEIGHT
-
-        # Verifica colisão com os pássaros
-        #collisions = pygame. sprite.spritecollide(self, True)
-        #if collisions:
-            # Encerra o programa em caso de colisão
-            #self.collided = True
-            #Player.reset_player(self)
         
         now = pygame.time.get_ticks()
         # Verifica quantos ticks se passaram desde a ultima mudança de frame.
@@ -77,7 +70,6 @@ class Player(pygame.sprite.Sprite):
         player.rect.bottom = HEIGHT
 
             
-
 class Snow(pygame.sprite.Sprite):
     def __init__(self, assets):
         # Construtor da classe mãe (Sprite).

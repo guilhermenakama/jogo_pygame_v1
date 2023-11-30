@@ -16,10 +16,10 @@ def init_screen(initial_screen):
     background_init = assets[BACKGROUND_INIT_IMG]
     background_init_rect = background_init.get_rect()
 
+    # Carrega as músicas
     pygame.mixer.music.load('assets/snd/music-box-we-wish-you-a-merry-christmas-79501.mp3')
     pygame.mixer.music.set_volume(0.4)
     pygame.mixer.music.play(loops=-1)
-
 
 
     running = True
